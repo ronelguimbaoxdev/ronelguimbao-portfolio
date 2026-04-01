@@ -22,11 +22,71 @@ window.addEventListener('scroll',()=>{
   });
 });
 
+const skObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const items = entry.target.querySelectorAll('.sk-item');
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.add('slide-in');
+        }, i * 110);
+      });
+      skObs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.15});
+const skList = document.getElementById('sk-list');
+if (skList) skObs.observe(skList);
 
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.1});
 document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
 
+(function(){
+  var HERO_TEXT = "I build web applications, APIs, and digital solutions with clean code and scalable architecture — focused on performance, security, and developer experience.";
+  var ABOUT_TEXT = "Highly skilled IT professional with solid experience in building and maintaining desktop and web-based enterprise-level applications. Strong background in full-stack development, with hands-on experience supporting ERP systems and enhancing internal business application. Strong problem-solving skills and a passion for continuous learning.";
 
+  function typeWriter(spanId, cursorId, text, speed, startDelay, onDone) {
+    var span = document.getElementById(spanId);
+    var cursor = document.getElementById(cursorId);
+    var idx = 0;
+    span.textContent = '';
+    if(cursor) cursor.style.visibility = 'visible';
+    setTimeout(function() {
+      var timer = setInterval(function() {
+        if(idx < text.length) {
+          span.textContent += text.charAt(idx);
+          idx++;
+        } else {
+          clearInterval(timer);
+          if(onDone) onDone();
+        }
+      }, speed);
+    }, startDelay);
+  }
+ // Hero: start typing after page animations settle
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      typeWriter('hero-typed', 'hero-cursor', HERO_TEXT, 26, 200);
+    }, 600);
+  });
+
+  // About: trigger when id-card scrolls into view
+  var aboutDone = false;
+  var aboutCursor = document.getElementById('about-cursor');
+  var aboutCard = document.querySelector('.id-card');
+  if(aboutCard) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if(entry.isIntersecting && !aboutDone) {
+          aboutDone = true;
+          if(aboutCursor) aboutCursor.style.visibility = 'visible';
+          typeWriter('about-typed', 'about-cursor', ABOUT_TEXT, 20, 400);
+        }
+      });
+    }, {threshold: 0.25});
+    io.observe(aboutCard);
+  }
+})();
 
 let isDark=true;
 
@@ -99,3 +159,178 @@ async function sendMsg(){
   }catch(e){rmTyping();addMsg('> Connection error. Please retry.','bot')}
   busy=false;document.getElementById('c-send').disabled=false;
 }
+
+const PROJECTS = [
+  {
+    title: 'E-Commerce Platform',
+    images: [
+      { src: 'assets/img/proj/proj1-img1.png', caption: 'Product Catalog — Homepage' },
+      { src: 'assets/img/proj/proj1-img2.png', caption: 'Shopping Cart & Ordering' },
+      { src: 'assets/img/proj/proj1-img3.png', caption: 'Frame Builder' },
+    ],
+    
+  },
+  {
+    title: 'Enterprise Resource Planning (ERP) System',
+    images: [
+      { src: 'assets/img/proj/proj2-img1.png', caption: 'Dashboard' },
+      { src: 'assets/img/proj/proj2-img2.png', caption: 'Customer Management' },
+      { src: 'assets/img/proj/proj2-img3.png', caption: 'Production Management' },
+      { src: 'assets/img/proj/proj2-img4.png', caption: 'Automated Price Calculation' },
+    ],
+    
+  },
+  {
+    title: 'Plastic Injection Monitoring Dashboard',
+    images: [
+     { src: 'assets/img/proj/proj3-img1.jpg', caption: 'Robotics Machine Overview' },
+      { src: 'assets/img/proj/proj3-img2.jpg', caption: 'Production Line Monitoring' },
+    ],
+   
+  },
+  {
+    title: 'Floww Cash and Budgeting App',
+    images: [
+      { src: 'assets/img/proj/proj4-img1.png', caption: 'Landing Page' },
+      { src: 'assets/img/proj/proj4-img2.png', caption: 'Dashboard' },
+      { src: 'assets/img/proj/proj4-img3.png', caption: 'Settings' },
+    ],
+  }
+];
+
+let activeProj = 0;
+let slideIdx   = 0;
+let activeTab  = 'img';
+
+function openModal(projIdx) {
+  activeProj = projIdx;
+  slideIdx   = 0;
+  const proj = PROJECTS[projIdx];
+
+  // Set title
+  document.getElementById('modal-proj-title').textContent = proj.title;
+
+  // Build image slider
+  buildSlider(proj.images);
+
+
+
+  // Open
+  document.getElementById('proj-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('proj-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  
+}
+
+function buildSlider(images) {
+  const track = document.getElementById('img-slider-track');
+  const dots  = document.getElementById('slide-dots');
+  const strip = document.getElementById('thumb-strip');
+
+  track.innerHTML = images.map((img, i) =>
+    `<div class="slide">
+      <img src="${img.src}" alt="${img.caption}" loading="lazy"/>
+      <div class="slide-overlay">${img.caption}</div>
+    </div>`
+  ).join('');
+
+  dots.innerHTML = images.map((_, i) =>
+    `<div class="sl-dot${i===0?' active':''}" onclick="goSlide(${i})"></div>`
+  ).join('');
+
+  strip.innerHTML = images.map((img, i) =>
+    `<img class="thumb${i===0?' active':''}" src="${img.src}" alt="${img.caption}" onclick="goSlide(${i})" loading="lazy"/>`
+  ).join('');
+
+  updateCounter(images.length);
+  updateSlider();
+}
+
+function buildVideosHTML(videos) {
+  return `<div class="vid-grid">${videos.map(v =>
+    `<div class="vid-card">
+      <div class="vid-thumb-wrap">
+        <img class="vid-thumb-img" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}"/>
+        <div class="vid-placeholder" id="vph-${v.id}" onclick="playVideo(this,'${v.id}')">
+          <div class="vid-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="vid-info">
+        <div class="vid-title">${v.title}</div>
+        <div class="vid-meta">${v.meta}</div>
+      </div>
+    </div>`
+  ).join('')}</div>`;
+}
+
+function buildVideos(videos) {
+  document.getElementById('modal-video-pane').innerHTML = buildVideosHTML(videos);
+}
+
+function playVideo(placeholder, videoId) {
+  const wrap = placeholder.parentElement;
+  placeholder.classList.add('hidden');
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none';
+  wrap.appendChild(iframe);
+}
+
+function slideMove(dir) {
+  const total = PROJECTS[activeProj].images.length;
+  slideIdx = (slideIdx + dir + total) % total;
+  updateSlider();
+}
+
+function goSlide(idx) {
+  slideIdx = idx;
+  updateSlider();
+}
+
+function updateSlider() {
+  document.getElementById('img-slider-track').style.transform = `translateX(-${slideIdx * 100}%)`;
+  // Dots
+  document.querySelectorAll('.sl-dot').forEach((d,i) => d.classList.toggle('active', i===slideIdx));
+  // Thumbs
+  document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active', i===slideIdx));
+  // Counter
+  updateCounter(PROJECTS[activeProj].images.length);
+}
+
+function updateCounter(total) {
+  document.getElementById('slide-counter').textContent = `${slideIdx+1} / ${total}`;
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.modal-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'img') {
+    document.getElementById('modal-img-pane').classList.add('active');
+  } else {
+    document.getElementById('modal-video-pane').classList.add('active');
+  }
+}
+
+// Close on backdrop click
+document.getElementById('proj-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft'  && document.getElementById('proj-modal').classList.contains('open')) slideMove(-1);
+  if (e.key === 'ArrowRight' && document.getElementById('proj-modal').classList.contains('open')) slideMove(1);
+});
+
+

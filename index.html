@@ -70,7 +70,8 @@
         <div class="hero-badge">READY FOR DEPLOYMENT</div>
         <h1 class="hero-name">RONEL<br>GUIMBAO</h1>
         <p class="hero-sub">FULL STACK SOFTWARE DEVELOPER &nbsp;|&nbsp; SQL DEVELOPER</p>
-        <p class="hero-desc">I build web applications, APIs, and digital solutions with clean code and scalable architecture — focused on performance, security, and developer experience.</p>
+        <p class="hero-desc" id="hero-desc-el"><span id="hero-typed"></span><span class="typing-cursor" id="hero-cursor"></span></p>
+       
         <a href="#projects" class="hero-btn">
           <div class="hero-btn-inner">
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -95,8 +96,7 @@
             <div class="id-avatar"><img src="assets/img/img-avatar.png" alt="Ronel Guimbao"></div>
             <div class="id-name">RONEL GUIMBAO</div>
             <div class="id-quote">"Built for speed. Built for impact. Built to last."</div>
-            <div class="id-desc">Highly skilled IT professional with solid experience in building and maintaining desktop and web-based enterprise-level applications. Strong background in full-stack development, with hands-on experience supporting ERP systems and
-              enhancing internal business application. Strong problem-solving skills and a passion for continuous learning.</div>
+            <div class="id-desc" id="about-desc-el"><span id="about-typed"></span><span class="typing-cursor" id="about-cursor" style="visibility:hidden"></span></div>
           </div>
           <div class="id-card-ftr">
             <div><div class="id-lbl">Location</div><div class="id-val">Cebu, Philippines</div></div>
@@ -181,8 +181,34 @@
       <div class="sl">Assets_verified</div>
       <div class="sec-title">SKILLS &amp; TECHNOLOGIES</div>
       <div class="sec-line"></div>
-      <div class="sk-grid rev">
-    
+      <div class="sk-layout">
+   
+      <div class="sk-list-col rev" id="sk-list">
+        <div class="sk-list-label">Core_Competencies</div>
+        <div class="sk-item" style="--pct:96%"><span class="sk-item-num">01</span>
+          <span class="sk-item-name">Full Stack Dev</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Expert</span></div>
+        <div class="sk-item" style="--pct:92%"><span class="sk-item-num">02</span>
+          <span class="sk-item-name">OOP Dev</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Expert</span></div>
+        <div class="sk-item" style="--pct:90%"><span class="sk-item-num">03</span>
+          <span class="sk-item-name">SQL Dev</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Advanced</span></div>
+        <div class="sk-item" style="--pct:88%"><span class="sk-item-num">04</span>
+          <span class="sk-item-name">API Design</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Advanced</span></div>
+        <div class="sk-item" style="--pct:85%"><span class="sk-item-num">05</span>
+          <span class="sk-item-name">UI/UX Dev</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Advanced</span></div>
+        <div class="sk-item" style="--pct:82%"><span class="sk-item-num">06</span>
+          <span class="sk-item-name">DevOps</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Proficient</span></div>
+        <div class="sk-item" style="--pct:80%"><span class="sk-item-num">07</span>
+          <span class="sk-item-name">AI Integration</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Proficient</span></div>
+        <div class="sk-item" style="--pct:80%"><span class="sk-item-num">08</span>
+          <span class="sk-item-name">Sys Architecture</span><div class="sk-item-bar-wrap"><div class="sk-item-bar"></div></div><span class="sk-item-tag">Proficient</span></div>
+      </div>
+
+      <div class="sk-grid rev d1">
+        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/delphi/delphi-original.svg" alt=""/><div class="sk-name">Delphi</div></div>
+        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt=""/><div class="sk-name">PHP</div></div>
+        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt=""/><div class="sk-name">Laravel</div></div>
+        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laminas/laminas-original.svg" alt=""/><div class="sk-name">Laminas</div></div>
+        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=""/><div class="sk-name">DoteNetCore</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt=""/><div class="sk-name">HTML5</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt=""/><div class="sk-name">CSS3</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt=""/><div class="sk-name">JavaScript</div></div>
@@ -193,20 +219,15 @@
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt=""/><div class="sk-name">Vue.js</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt=""/><div class="sk-name">Next.js</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt=""/><div class="sk-name">Node.js</div></div>
-        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt=""/><div class="sk-name">PHP</div></div>
-        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt=""/><div class="sk-name">Laravel</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt=""/><div class="sk-name">Python</div></div>
-        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt=""/><div class="sk-name">FastAPI</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt=""/><div class="sk-name">MySQL</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt=""/><div class="sk-name">PostgreSQL</div></div>
-        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt=""/><div class="sk-name">MongoDB</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt=""/><div class="sk-name">Redis</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt=""/><div class="sk-name">Docker</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt=""/><div class="sk-name">AWS</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt=""/><div class="sk-name">Linux</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt=""/><div class="sk-name">Git</div></div>
         <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt=""/><div class="sk-name">React Native</div></div>
-        <div class="sk-card"><img class="sk-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt=""/><div class="sk-name">GitHub</div></div>
       </div>
     </section>
 
@@ -218,68 +239,78 @@
 
         <div class="proj-card rev">
           <div class="proj-num">01</div>
+          
+          <div class="proj-title">E-Commerce Platform</div>
+          <div class="proj-desc">Full-stack online store with product catalog, cart management, order tracking, and payment gateway integration. Built for a Cebu-based retailer with real-time inventory sync.</div>
           <div class="proj-icons">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" title="React"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" title="Node.js"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zend/zend-original.svg" title="Zend"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" title="PHP"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" title="JQuery"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" title="MySQL"/>
             <img src="https://cdn.simpleicons.org/stripe/635BFF" title="Stripe"/>
           </div>
-          <div class="proj-title">E-Commerce Platform</div>
-          <div class="proj-desc">Full-stack online store with product catalog, cart management, order tracking, and payment gateway integration. Built for a Cebu-based retailer with real-time inventory sync.</div>
-          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">MySQL</span><span class="proj-tag">Stripe</span></div>
           <div class="proj-links">
             <a href="#" class="proj-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
             <a href="#" class="proj-link"><svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
+            <button class="proj-gallery-btn" onclick="openModal(0)"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Gallery</button>
           </div>
         </div>
 
         <div class="proj-card rev d1">
           <div class="proj-num">02</div>
-          <div class="proj-icons">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" title="Laravel"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" title="Vue.js"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title="PostgreSQL"/>
-          </div>
+          
           <div class="proj-title">Enterprise Resource Planning (ERP) System</div>
           <div class="proj-desc">Comprehensive business solution for managing resources, sales, inventory, and operations across multiple departments.</div>
-          <div class="proj-tags"><span class="proj-tag">Laravel</span><span class="proj-tag">Vue.js</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">REST API</span></div>
+          <div class="proj-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zend/zend-original.svg" title="Zend"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" title="PHP"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" title="JQuery"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" title="MySQL"/>
+            <img src="https://cdn.simpleicons.org/stripe/635BFF" title="Stripe"/>
+          </div>
           <div class="proj-links">
             <a href="#" class="proj-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
             <a href="#" class="proj-link"><svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
+            <button class="proj-gallery-btn" onclick="openModal(1)"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Gallery</button>
           </div>
         </div>
 
         <div class="proj-card rev d1">
           <div class="proj-num">03</div>
-          <div class="proj-icons">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" title="React"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg" title="Socket.io"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" title="MongoDB"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" title="Express"/>
-          </div>
           <div class="proj-title">Plastic Injection Monitoring Dashboard</div>
           <div class="proj-desc">Real-time monitoring solution for tracking plastic injection molding processes, including temperature, pressure, and cycle time data visualization.</div>
-          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Socket.io</span><span class="proj-tag">MongoDB</span><span class="proj-tag">Express</span></div>
+          <div class="proj-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" title="PHP"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" title="HTML"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" title="CSS"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title="PostgreSQL"/>
+          </div>
           <div class="proj-links">
             <a href="#" class="proj-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
             <a href="#" class="proj-link"><svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
+            <button class="proj-gallery-btn" onclick="openModal(2)"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Gallery</button>          
           </div>
         </div>
 
         <div class="proj-card rev d2">
           <div class="proj-num">04</div>
+          
+          <div class="proj-title">CFloww Cash and Budgeting App (Beta)</div>
+          <div class="proj-desc">Cash and budgeting app that helps users manage their finances effectively with AI-powered insights and personalized recommendations.</div>
           <div class="proj-icons">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" title="Next.js"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" title="Laravel"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" title="Angular"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" title="TypeScript"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" title="Tailwind"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" title="Vercel"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" title="MySQL"/>
           </div>
-          <div class="proj-title">CFloww Cash and Budgeting App</div>
-          <div class="proj-desc">Cash and budgeting app that helps users manage their finances effectively with AI-powered insights and personalized recommendations.</div>
-          <div class="proj-tags"><span class="proj-tag">Next.js</span><span class="proj-tag">Claude API</span><span class="proj-tag">Tailwind</span><span class="proj-tag">TypeScript</span></div>
           <div class="proj-links">
             <a href="#" class="proj-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Live Demo</a>
             <a href="#" class="proj-link"><svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
+            <button class="proj-gallery-btn" onclick="openModal(3)"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Gallery</button>
           </div>
         </div>
 
@@ -371,6 +402,53 @@
       </div>
     </footer>
 
+<div id="proj-modal" role="dialog" aria-modal="true">
+  <div id="proj-modal-panel">
+
+    <!-- Header -->
+    <div id="modal-hdr">
+      <div>
+        <div id="modal-proj-label">// Project_Gallery</div>
+        <div id="modal-proj-title">PROJECT NAME</div>
+      </div>
+      <button id="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div id="modal-tabs">
+      <button class="modal-tab active" id="tab-img" onclick="switchTab('img')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Image Gallery
+      </button>
+      
+    </div>
+
+    <!-- Image pane -->
+    <div class="modal-pane active" id="modal-img-pane">
+      <div id="img-slider-wrap">
+        <div id="img-slider-track"></div>
+        <div id="slide-counter">1 / 1</div>
+        <button class="sl-arrow" id="sl-prev" onclick="slideMove(-1)">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="sl-arrow" id="sl-next" onclick="slideMove(1)">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div id="slide-dots"></div>
+      <div id="thumb-strip"></div>
+    </div>
+
+    <!-- Video pane -->
+    <div class="modal-pane" id="modal-video-pane">
+      <div class="vid-grid" id="vid-grid"></div>
+    </div>
+
+  </div>
+</div>
+
     <button id="chat-btn" onclick="toggleChat()" title="Chat with AI">
       <div class="chat-notif"></div>
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -383,13 +461,13 @@
           <div class="c-info"><h4>SYSTEM_ASSISTANT</h4><p>V1.0_AI_CORE</p></div>
           <button class="c-close" onclick="toggleChat()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
-        <div class="c-status">System online · Ronel's AI assistant active</div>
+        <div class="c-status">System_online · Chat_assistant_activated</div>
       </div>
       <div id="c-msgs">
         <div class="msg bot">
-          <div class="msg-av">AI</div>
+          <div class="msg-av">A</div>
           <div>
-            <div class="msg-bub">Hello. I'm Ronel's AI assistant. Ask me anything about his skills, projects, or experience — I'll pull the data.</div>
+            <div class="msg-bub">Hello. I'm Ronel's chat assistant. Ask me anything about his skills, projects, or experience — I'll pull the data.</div>
             <div class="msg-lbl">just now</div>
           </div>
         </div>
