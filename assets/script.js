@@ -42,7 +42,7 @@ const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target
 document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
 
 (function(){
-  var HERO_TEXT = "I build web applications, APIs, and digital solutions with clean code and scalable architecture — focused on performance, security, and developer experience.";
+  var HERO_TEXT = "Specializing in full stack development, I help businesses build fast, scalable, and user-focused digital products that solve real problems, boost revenue, increase user engagement, foster innovation, and drive long-term business growth.";
   var ABOUT_TEXT = "Highly skilled IT professional with solid experience in building and maintaining desktop and web-based enterprise-level applications. Strong background in full-stack development, with hands-on experience supporting ERP systems and enhancing internal business application. Strong problem-solving skills and a passion for continuous learning.";
 
   function typeWriter(spanId, cursorId, text, speed, startDelay, onDone) {
@@ -98,7 +98,46 @@ window.addEventListener('load',()=>{
   });
 });
 
+// PROJECT SCROLL CONTAINER
+const projContainer = document.getElementById('proj-scroll-container');
+const projWrap = document.getElementById('proj-scroll-wrap');
+const projHint = document.getElementById('proj-scroll-hint');
 
+if (projContainer) {
+  // Set container height dynamically after load to fit exactly 2 rows
+  function setProjContainerHeight() {
+    const cards = projContainer.querySelectorAll('.proj-card');
+    if (cards.length >= 2) {
+      const cardH = cards[0].offsetHeight;
+      const borderGap = 1;
+      projContainer.style.maxHeight = (cardH * 2 + borderGap * 3) + 'px';
+    }
+  }
+  window.addEventListener('load', setProjContainerHeight);
+  window.addEventListener('resize', setProjContainerHeight);
+
+  projContainer.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = projContainer;
+    const atTop = scrollTop === 0;
+    const atBottom = scrollTop + clientHeight >= scrollHeight - 2;
+    projWrap.classList.toggle('at-top', atTop);
+    projWrap.classList.toggle('at-bottom', atBottom);
+    projWrap.classList.toggle('scrolled', !atTop);
+    // hide hint once scrolled
+    if (!atTop) projHint.classList.add('hidden');
+  });
+}
+
+// SCROLL
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('prog').style.width=(window.scrollY/(s.scrollHeight-s.clientHeight)*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+
+
+
+//Chat Asst
 let open=false,busy=false;
 const SYS=`You are an AI assistant for Ronel Guimbao's portfolio website. Answer questions about Ronel concisely and professionally with a slightly technical, terminal-like tone.
 
@@ -195,7 +234,24 @@ const PROJECTS = [
       { src: 'assets/img/proj/proj4-img2.png', caption: 'Dashboard' },
       { src: 'assets/img/proj/proj4-img3.png', caption: 'Settings' },
     ],
+  },
+  {
+    title: 'EMR Healthcare Software',
+    images: [
+      { src: 'assets/img/proj/proj5-img1.webp', caption: 'Landing Page' },
+      { src: 'assets/img/proj/proj5-img2.webp', caption: 'Dashboard' },
+      { src: 'assets/img/proj/proj5-img3.webp', caption: 'Settings' },
+    ],
+  },
+  {
+    title: 'Stocks Trading Forum Platform',
+    images: [
+      { src: 'assets/img/proj/proj6-img1.png', caption: 'Landing Page' },
+      { src: 'assets/img/proj/proj6-img2.png', caption: 'Dashboard' },
+      { src: 'assets/img/proj/proj6-img3.png', caption: 'Settings' },
+    ],
   }
+
 ];
 
 let activeProj = 0;

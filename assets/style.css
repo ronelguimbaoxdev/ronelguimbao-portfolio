@@ -353,6 +353,34 @@ h1.hero-name{font-family:var(--disp);font-size:clamp(4rem,10vw,10rem);line-heigh
 .sk-item-tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grn);border:1px solid rgba(0,255,140,.2);padding:3px 8px;flex-shrink:0}
 
 #projects{background:var(--bg2)}
+.proj-scroll-wrap{
+  position:relative;
+}
+.proj-scroll-wrap::before,
+.proj-scroll-wrap::after{
+  content:'';position:absolute;left:0;right:0;height:120px;pointer-events:none;z-index:10;transition:opacity .4s ease;
+}
+.proj-scroll-wrap::before{
+  top:0;
+  background:linear-gradient(to bottom,var(--bg2) 0%,transparent 100%);
+  opacity:0;
+}
+.proj-scroll-wrap::after{
+  bottom:0;
+  background:linear-gradient(to top,var(--bg2) 0%,transparent 100%);
+  opacity:1;
+}
+.proj-scroll-wrap.at-top::before{opacity:0}
+.proj-scroll-wrap.at-bottom::after{opacity:0}
+.proj-scroll-wrap.scrolled::before{opacity:1}
+.proj-scroll-container{
+  max-height:calc(2 * 300px + 2px);
+  overflow-y:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.proj-scroll-container::-webkit-scrollbar{display:none}
+
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bord);border:1px solid var(--bord)}
 .proj-card{background:var(--bg2);padding:32px;position:relative;cursor:none;transition:background .25s;overflow:hidden}
 [data-theme="light"] .proj-card{background:var(--bg2)}
