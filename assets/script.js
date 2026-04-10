@@ -135,10 +135,8 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
 });
 
-
-
-//Chat Asst
-let open=false,busy=false;
+// CHAT
+let chatOpen=false,busy=false;
 const SYS=`You are an AI assistant for Ronel Guimbao's portfolio website. Answer questions about Ronel concisely and professionally with a slightly technical, terminal-like tone.
 
 Facts about Ronel:
@@ -153,28 +151,24 @@ Facts about Ronel:
 - Contact: ronel.guimbao@email.com
 - Philosophy: System precision, performance-first, security-native
 
-Keep responses concise (2-3 sentences). Use technical phrasing. Occasionally prefix key info with "> " for terminal feel.`;
+Keep responses concise (2-3 sentences). Use technical phrasing. Occasionally prefix key phrases with "> " for terminal feel.`;
 
 const hist=[];
-function toggleChat(){
-  open=!open;
-  document.getElementById('chat-panel').classList.toggle('open',open);
-  if(open){document.querySelector('.chat-notif').style.display='none';setTimeout(()=>document.getElementById('c-inp').focus(),300)}
-}
-function aResize(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,108)+'px'}
+function toggleChat(){chatOpen=!chatOpen;document.getElementById('chat-panel').classList.toggle('open',chatOpen);if(chatOpen){document.querySelector('.chat-notif').style.display='none';setTimeout(()=>document.getElementById('c-inp').focus(),300)}}
+function aResize(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,110)+'px'}
 function hKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg()}}
 function sendSugg(btn){document.getElementById('c-inp').value=btn.textContent;document.getElementById('suggs').style.display='none';sendMsg()}
-function nowT(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
+function now(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
 function addMsg(text,role){
   const w=document.getElementById('c-msgs'),d=document.createElement('div');
   d.className='msg '+role;
-  d.innerHTML=`<div class="msg-av">${role==='bot'?'AI':'YOU'}</div><div><div class="msg-bub">${text}</div><div class="msg-lbl">${nowT()}</div></div>`;
+  d.innerHTML=`<div class="msg-av">${role==='bot'?'A':'YOU'}</div><div><div class="msg-bub">${text}</div><div class="msg-lbl">${now()}</div></div>`;
   w.appendChild(d);w.scrollTop=w.scrollHeight;
 }
 function showTyping(){
   const w=document.getElementById('c-msgs'),d=document.createElement('div');
   d.className='msg bot';d.id='typing';
-  d.innerHTML=`<div class="msg-av">AI</div><div><div class="msg-bub"><div class="typing-bub"><span></span><span></span><span></span></div></div></div>`;
+  d.innerHTML=`<div class="msg-av">A</div><div><div class="msg-bub"><div class="typing-bub"><span></span><span></span><span></span></div></div></div>`;
   w.appendChild(d);w.scrollTop=w.scrollHeight;
 }
 function rmTyping(){const t=document.getElementById('typing');if(t)t.remove()}
@@ -187,16 +181,48 @@ async function sendMsg(){
   busy=true;hist.push({role:'user',content:txt});
   addMsg(txt,'user');showTyping();
   try{
+    // NOTE: Replace 'YOUR_ANTHROPIC_API_KEY' with your actual key.
+    // For production, proxy this through a backend to keep the key secure.
+    const ANTHROPIC_KEY = 'YOUR_ANTHROPIC_API_KEY';
+    if(ANTHROPIC_KEY === 'YOUR_ANTHROPIC_API_KEY'){
+      // Demo mode: simulate a response when no API key is set
+      throw new Error('no_key');
+    }
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': ANTHROPIC_KEY,
+        'anthropic-version':'2026-01-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:hist})
     });
+    if(!res.ok){const err=await res.json();throw new Error(err.error?.message||'API error '+res.status);}
     const data=await res.json();rmTyping();
     const reply=data.content?.[0]?.text||'Error retrieving response. Try again.';
-    hist.push({role:'assistant',content:reply});addMsg(reply,'bot');
-  }catch(e){rmTyping();addMsg('> Connection error. Please retry.','bot')}
-  busy=false;document.getElementById('c-send').disabled=false;
+    hist.push({role:'assistant',content:reply});
+    addMsg(reply,'bot');
+  }catch(e){
+    rmTyping();
+    if(e.message==='no_key'){
+      // Provide simulated demo responses based on keywords
+      const q=txt.toLowerCase();
+      let demo='> System ready. Configure ANTHROPIC_API_KEY in the script to enable full AI responses.';
+      if(q.includes('stack')||q.includes('tech')||q.includes('skill'))demo='> Tech stack: React, Next.js, Vue.js, Node.js, Laravel, Python, FastAPI, MySQL, PostgreSQL, MongoDB, Docker, AWS. Full-stack specialist with 3+ years.';
+      else if(q.includes('project'))demo='> Active projects: E-Commerce Platform, HR Management System, Real-Time Chat App, AI Document Analyzer. All production-grade builds.';
+      else if(q.includes('hire')||q.includes('available')||q.includes('freelance'))demo='> Status: AVAILABLE. Open to full-time and freelance opportunities. Direct contact: ronelguimbaoxdev@gmail.com';
+      else if(q.includes('contact')||q.includes('email'))demo='> Contact node: ronelguimbaoxdev@gmail.com // Location: Cebu City, Philippines (GMT+8)';
+      else if(q.includes('experience'))demo='> 3+ years experience. Current: Software Developer (2023–present). Prior: Junior Web Dev, Freelance. Location: Cebu, Philippines.';
+      else if(q.includes('gwapo?'))demo='> Yes of course! Ronel is very gwapo. 😎';
+      else if(q.includes('description'))demo='> Average height and build, dark complexion, rugged with a well-kept style appearance.';
+      hist.push({role:'assistant',content:demo});
+      addMsg(demo,'bot');
+    } else {
+      addMsg('> Connection error: '+e.message+'. Please try again.','bot');
+    }
+  }
+  finally{busy=false;document.getElementById('c-send').disabled=false;}
 }
 
 const PROJECTS = [
