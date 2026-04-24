@@ -415,4 +415,76 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' && document.getElementById('proj-modal').classList.contains('open')) slideMove(1);
 });
 
+// ══ HERO FLOATING CODE ELEMENTS ══
+(function(){
+  const layer = document.getElementById('hero-float-layer');
+  if(!layer) return;
+
+  const tokens = [
+    'const','let','var','function()','return','if (x)','else','for (i)','while','class',
+    'import','export default','async','await','try {}','catch (e)','new','this','super','null',
+    'true','false','undefined','typeof x','=>','{ }','[ ]','( )','++','--','===','!==',
+    '&&','||','??','?.','npm i','git push','git pull','fetch()','render()','useState()',
+    'useEffect()','props','state','REST API','JSON.parse','SQL','SELECT *','WHERE id',
+    'Promise','resolve','reject','.map()','filter()','reduce()','.then()','console.log()',
+    'require()','module.exports','async/await','@keyframes','z-index','display:flex',
+    'npm run dev','git commit','docker run','localhost:3000','200 OK','404','POST /api',
+    'schema.prisma','migrate','seed','BUILD OK','LINTING...','COMPILED','PORT 8080',
+    '0xFF','0b1010','Math.random()','Array.from','Object.keys','JSON.stringify',
+    '<App />','<div>','</div>','<React.Fragment>','styled.div','tailwind','@apply',
+  ];
+
+  const hero = document.getElementById('home');
+  const W = () => hero.offsetWidth;
+  const H = () => hero.offsetHeight;
+
+  // Safe zones to avoid central text cluster
+  function getPos(){
+    const zones = [
+      // left strip
+      {xl:0.02, xr:0.22, yt:0.04, yb:0.96},
+      // right strip
+      {xl:0.78, xr:0.98, yt:0.04, yb:0.96},
+      // top band
+      {xl:0.22, xr:0.78, yt:0.03, yb:0.18},
+      // bottom band
+      {xl:0.22, xr:0.78, yt:0.82, yb:0.97},
+    ];
+    const z = zones[Math.floor(Math.random() * zones.length)];
+    return {
+      x: (z.xl + Math.random() * (z.xr - z.xl)) * W(),
+      y: (z.yt + Math.random() * (z.yb - z.yt)) * H(),
+    };
+  }
+
+  function spawn(){
+    const el = document.createElement('div');
+    el.className = 'hfc';
+    el.textContent = tokens[Math.floor(Math.random() * tokens.length)];
+
+    const pos = getPos();
+    const dur = 5 + Math.random() * 9;
+    const delay = Math.random() * 3;
+    const peak = (0.18 + Math.random() * 0.32).toFixed(2);
+
+    el.style.cssText = `
+      left:${pos.x}px;top:${pos.y}px;
+      --dur:${dur.toFixed(1)}s;--delay:${delay.toFixed(2)}s;--peak:${peak};
+      font-size:${(.62 + Math.random()*.24).toFixed(2)}rem;
+    `;
+
+    layer.appendChild(el);
+
+    // clean up after 2 full cycles
+    setTimeout(() => el.remove(), (dur * 2 + delay) * 1000 + 2000);
+  }
+
+  // Initial burst — staggered over 4s
+  for(let i = 0; i < 42; i++){
+    setTimeout(spawn, Math.random() * 6000);
+  }
+
+  // Continuous drip — add a new token every 600-1400ms
+  setInterval(spawn, 800 + Math.random() * 1200);
+})();
 
