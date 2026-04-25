@@ -231,7 +231,7 @@ const PROJECTS = [
     images: [
       { src: 'assets/img/proj/proj1-img1.png', caption: 'Product Catalog — Homepage' },
       { src: 'assets/img/proj/proj1-img2.png', caption: 'Shopping Cart & Ordering' },
-      { src: 'assets/img/proj/proj1-img3.png', caption: 'Frame Builder' },
+      { src: 'assets/img/proj/proj1-img4.png', caption: 'Frame Builder' },
     ],
     
   },
